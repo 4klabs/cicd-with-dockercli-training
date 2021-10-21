@@ -12,26 +12,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Docker Login
         uses: docker/login-action@v1.10.0
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
       - name: Docker Build and Push
         uses: docker/build-push-action@v2.7.0
         with:
           push: true
           file: ./Dockerfile
           tags: mateus4k/testing_app:${{ github.sha }}
+
   CD:
     needs: [CI]
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -40,4 +37,3 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: curl -o- https://raw.githubusercontent.com/4klabs/cicd-trainning-labs/main/deploy.sh | bash -s ${{ github.sha }}
-            
