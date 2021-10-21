@@ -1,9 +1,8 @@
-
 name: CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -19,7 +18,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          
+
       - name: Docker Build and Push
         uses: docker/build-push-action@v2.7.0
         with:
@@ -29,10 +28,10 @@ jobs:
   CD:
     needs: [CI]
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -41,4 +40,3 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: ./app/deploy.sh
-        
