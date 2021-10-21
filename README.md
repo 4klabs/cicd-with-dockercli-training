@@ -19,4 +19,5 @@ dockerd-rootless-setuptool.sh install
 
 ```bash
 curl -o- https://raw.githubusercontent.com/4klabs/cicd-trainning-labs/main/deploy.sh > deploy.sh
+chmod +x deploy.sh
 ```
