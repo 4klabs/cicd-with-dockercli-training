@@ -39,5 +39,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script: curl -o- https://raw.githubusercontent.com/4klabs/cicd-trainning-labs/main/deploy.sh | bash ${{ github.sha }}
+          script: curl -o- https://raw.githubusercontent.com/4klabs/cicd-trainning-labs/main/deploy.sh | bash -s ${{ github.sha }}
             
