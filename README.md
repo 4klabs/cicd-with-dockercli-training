@@ -15,7 +15,7 @@ sudo sh get-docker.sh
 dockerd-rootless-setuptool.sh install
 ```
 
-2. Copy `deploy.sh` to server
+2. Copy `deploy.sh`
 
 ```bash
 curl -o- https://raw.githubusercontent.com/4klabs/cicd-trainning-labs/main/deploy.sh > deploy.sh
