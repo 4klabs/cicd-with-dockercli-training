@@ -13,6 +13,9 @@ sudo sh get-docker.sh
 
 # Access without root
 dockerd-rootless-setuptool.sh install
+
+# Login
+docker login
 ```
 
 2. Copy `deploy.sh`
